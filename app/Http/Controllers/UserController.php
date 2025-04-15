@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PatchUserRequest;
 use App\Http\Requests\PostUserRequest;
+use App\Http\Services\UserService;
 use App\Models\User;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
+    protected UserService $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function index()
     {
         return User::all();
@@ -21,23 +29,24 @@ class UserController extends Controller
 
     public function store(PostUserRequest $request)
     {
-        $validated = $request->validated();
-        $user = User::create($validated);
+        $userData = $request->validated();
+        $user = $this->userService->createUser($userData);
 
         return response()->json($user , Response::HTTP_CREATED);
     }
 
-    public function update(PatchUserRequest $request , User $user)
+    public function update(PatchUserRequest $request , User $oldUser)
     {
-        $validated = $request->validated();
-        $user->update($validated);
+        $userData = $request->validated();
+        $user = $this->userService->updateUser($userData , $oldUser);
 
         return response()->json($user);
     }
 
     public function destroy(User $user)
     {
-        $user->delete();
+        $this->userService->destroyUser($user);
+
         return response()->json(Response::HTTP_NO_CONTENT);
     }
 }

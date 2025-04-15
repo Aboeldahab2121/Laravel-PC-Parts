@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Category::class);
+            $table->foreignIdFor(Category::class)->nullable()->constrained()->nullOnDelete();
             $table->string('title');
             $table->string('image'); // to store image path
             $table->integer('price');

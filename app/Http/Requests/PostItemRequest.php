@@ -16,10 +16,10 @@ class PostItemRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'image' => 'string|required', // to store image path
-            'price' => 'integer|required',
-            'quantity' => 'integer|required',
-            // manage the foreign key validation
+            'image' => 'required|string', // to store image path
+            'price' => 'required|integer',
+            'quantity' => 'required|integer',
+            'category_id' => 'required|nullable|exists:categories,id',  // manage the foreign key validation
         ];
     }
 }

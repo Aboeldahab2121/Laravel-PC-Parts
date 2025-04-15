@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PatchCategoryRequest;
 use App\Http\Requests\PostCategoryRequest;
+use App\Http\Services\CategoryService;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class CategoryController extends Controller
 {
+    protected CategoryService $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
     public function index()
     {
         return Category::all();
@@ -22,8 +30,8 @@ class CategoryController extends Controller
 
     public function store(PostCategoryRequest $request)
     {
-        $validated = $request->validated();
-        $category = Category::create($validated);
+        $categoryData = $request->validated();
+        $category = $this->categoryService->createCategory($categoryData);
 
         return response()->json($category , Response::HTTP_CREATED);
     }
@@ -31,14 +39,14 @@ class CategoryController extends Controller
     public function update(PatchCategoryRequest $request , Category $category)
     {
         $validated = $request->validated();
-        $category->update($validated);
+        $category = $this->categoryService->updateCategory($validated , $category);
 
         return response()->json($category);
     }
 
     public function destroy(Category $category)
     {
-        $category->delete();
+        $this->categoryService->destroyCategory($category);
 
         return response()->json(Response::HTTP_NO_CONTENT);
     }
