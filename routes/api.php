@@ -6,10 +6,10 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource('users', UserController::class);
-Route::patch('users/{id} ', [UserController::class , 'update']);
+Route::patch('users/{id}', [UserController::class, 'update']);
 
 Route::apiResource('categories', CategoryController::class);
-Route::patch('categories/{id}' , [CategoryController::class , 'update']);
+Route::patch('categories/{id}' , [CategoryController::class, 'update']);
 
 Route::apiResource('items' , ItemController::class);
-Route::patch('item/{id}' , [ItemController::class , 'update']);
+Route::patch('items/{id}' , [ItemController::class, 'update']);

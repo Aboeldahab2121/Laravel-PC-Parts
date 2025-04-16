@@ -13,6 +13,10 @@ class Category extends Model
         'min_price',
     ];
 
+    protected $guarded =[
+        'id'
+    ];
+
     public function item()
     {
         return $this->hasMany(Item::class);

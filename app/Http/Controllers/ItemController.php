@@ -36,12 +36,12 @@ class ItemController extends Controller
         return response()->json($item , Response::HTTP_CREATED);
     }
 
-    public function update(Item $oldItem , PatchItemRequest $request)
+    public function update(PatchItemRequest $request, Item $item)
     {
         $itemData = $request->validated();
-        $newItem = $this->itemService->updateItem($itemData , $oldItem);
+        $item = $this->itemService->updateItem($itemData , $item);
 
-        return response()->json($newItem);
+        return response()->json($item);
     }
 
     public function destroy(Item $item)

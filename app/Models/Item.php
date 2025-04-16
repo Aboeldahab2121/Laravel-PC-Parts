@@ -11,7 +11,13 @@ class Item extends Model
         'title',
         'image',
         'price',
-        'quantity'
+        'quantity',
+        'category_id' // this must be here
+    ];
+
+
+    protected $guarded =[
+        'id'
     ];
 
     public function category()

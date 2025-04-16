@@ -17,7 +17,7 @@ class ItemService
     public function updateItem(array $itemData , Item $item)
     {
         $item->update($itemData);
-        // event firing placehoItem
+        // event firing placeholder
 
         return $item;
     }

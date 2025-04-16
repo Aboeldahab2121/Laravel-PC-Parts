@@ -19,7 +19,7 @@ class PostItemRequest extends FormRequest
             'image' => 'required|string', // to store image path
             'price' => 'required|integer',
             'quantity' => 'required|integer',
-            'category_id' => 'required|nullable|exists:categories,id',  // manage the foreign key validation
+            'category_id' => 'required|exists:categories,id',  // manage the foreign key validation
         ];
     }
 }
