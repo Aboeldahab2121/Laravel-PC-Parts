@@ -47,6 +47,6 @@ class UserController extends Controller
     {
         $this->userService->destroyUser($user);
 
-        return response()->json(Response::HTTP_NO_CONTENT);
+        return response()->json(null , Response::HTTP_NO_CONTENT);
     }
 }

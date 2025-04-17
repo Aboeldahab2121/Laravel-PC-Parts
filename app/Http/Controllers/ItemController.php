@@ -6,7 +6,6 @@ use App\Http\Requests\PatchItemRequest;
 use App\Http\Requests\PostItemRequest;
 use App\Http\Services\ItemService;
 use App\Models\Item;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class ItemController extends Controller
@@ -32,6 +31,7 @@ class ItemController extends Controller
     {
         $itemData = $request->validated();
         $item = $this->itemService->createItem($itemData);
+        $item->image = asset($item->image);
 
         return response()->json($item , Response::HTTP_CREATED);
     }
@@ -48,6 +48,6 @@ class ItemController extends Controller
     {
         $this->itemService->destroyItem($item);
 
-        return response()->json(Response::HTTP_NO_CONTENT);
+        return response()->json(null , Response::HTTP_NO_CONTENT);
     }
 }

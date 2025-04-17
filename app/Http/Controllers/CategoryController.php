@@ -48,6 +48,6 @@ class CategoryController extends Controller
     {
         $this->categoryService->destroyCategory($category);
 
-        return response()->json(Response::HTTP_NO_CONTENT);
+        return response()->json(null ,Response::HTTP_NO_CONTENT);
     }
 }

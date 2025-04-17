@@ -17,7 +17,7 @@ class PatchUserRequest extends FormRequest
         return [
             'first_name' => 'sometimes|string',
             'last_name' => 'sometimes|string',
-            'email' => 'sometimes|email|unique:users,email,' . $this->route('user')->id,
+            'email' => 'sometimes|email|unique:users,email,',
             'password' => 'sometimes',   //['sometimes', Password::default()],
             'role' => 'sometimes|string'
         ];
