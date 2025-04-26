@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Category;
 
 class Item extends Model
 {
@@ -12,12 +11,11 @@ class Item extends Model
         'image',
         'price',
         'quantity',
-        'category_id' // this must be here
+        'category_id', // this must be here
     ];
 
-
-    protected $guarded =[
-        'id'
+    protected $guarded = [
+        'id',
     ];
 
     public function category()

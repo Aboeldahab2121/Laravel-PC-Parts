@@ -33,13 +33,13 @@ class ItemController extends Controller
         $item = $this->itemService->createItem($itemData);
         $item->image = asset($item->image);
 
-        return response()->json($item , Response::HTTP_CREATED);
+        return response()->json($item, Response::HTTP_CREATED);
     }
 
     public function update(PatchItemRequest $request, Item $item)
     {
         $itemData = $request->validated();
-        $item = $this->itemService->updateItem($itemData , $item);
+        $item = $this->itemService->updateItem($itemData, $item);
 
         return response()->json($item);
     }
@@ -48,6 +48,6 @@ class ItemController extends Controller
     {
         $this->itemService->destroyItem($item);
 
-        return response()->json(null , Response::HTTP_NO_CONTENT);
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }

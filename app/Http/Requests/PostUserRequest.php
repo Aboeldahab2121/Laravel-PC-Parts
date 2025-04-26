@@ -7,7 +7,6 @@ use Illuminate\Validation\Rules\Password;
 
 class PostUserRequest extends FormRequest
 {
-
     public function authorize(): bool
     {
         return true;
@@ -19,8 +18,8 @@ class PostUserRequest extends FormRequest
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|unique:users|email',
-            'password' => 'required',   //['required', Password::default()],
-            'role' => 'required|string'
+            'password' => 'required',   // ['required', Password::default()],
+            'role' => 'required|string',
         ];
     }
 }

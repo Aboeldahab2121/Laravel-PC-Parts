@@ -14,7 +14,7 @@ class UserService
         return $user;
     }
 
-    public function updateUser(array $userData , User $user)
+    public function updateUser(array $userData, User $user)
     {
         $user->update($userData);
         // event firing placeholder

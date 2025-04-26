@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PatchUserRequest extends FormRequest
 {
-
     public function authorize(): bool
     {
         return true;
@@ -18,8 +17,8 @@ class PatchUserRequest extends FormRequest
             'first_name' => 'sometimes|string',
             'last_name' => 'sometimes|string',
             'email' => 'sometimes|email|unique:users,email,',
-            'password' => 'sometimes',   //['sometimes', Password::default()],
-            'role' => 'sometimes|string'
+            'password' => 'sometimes',   // ['sometimes', Password::default()],
+            'role' => 'sometimes|string',
         ];
     }
 }

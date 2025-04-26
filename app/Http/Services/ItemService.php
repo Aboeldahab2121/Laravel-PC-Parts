@@ -18,10 +18,10 @@ class ItemService
     public function createItem(array $itemData)
     {
         $category = Category::findOrFail($itemData['category_id']);
-        if($itemData['price'] < $category->min_price){
-            throw new BadRequestHttpException("Item price can not be less than category minimum price");
+        if ($itemData['price'] < $category->min_price) {
+            throw new BadRequestHttpException('Item price can not be less than category minimum price');
         }
-        $path = $this->fileService->upload($itemData['image'] , 'public');
+        $path = $this->fileService->upload($itemData['image'], 'public');
         $itemData['image'] = $path;
         $item = Item::create($itemData);
         // event firing placeholder
@@ -29,7 +29,7 @@ class ItemService
         return $item;
     }
 
-    public function updateItem(array $itemData , Item $item)
+    public function updateItem(array $itemData, Item $item)
     {
         $item->update($itemData);
         // event firing placeholder

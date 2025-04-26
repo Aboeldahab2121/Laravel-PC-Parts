@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Item;
 
 class Category extends Model
 {
@@ -13,8 +12,8 @@ class Category extends Model
         'min_price',
     ];
 
-    protected $guarded =[
-        'id'
+    protected $guarded = [
+        'id',
     ];
 
     public function item()

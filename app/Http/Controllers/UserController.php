@@ -32,13 +32,13 @@ class UserController extends Controller
         $userData = $request->validated();
         $user = $this->userService->createUser($userData);
 
-        return response()->json($user , Response::HTTP_CREATED);
+        return response()->json($user, Response::HTTP_CREATED);
     }
 
-    public function update(PatchUserRequest $request , User $oldUser)
+    public function update(PatchUserRequest $request, User $user)
     {
         $userData = $request->validated();
-        $user = $this->userService->updateUser($userData , $oldUser);
+        $user = $this->userService->updateUser($userData, $user);
 
         return response()->json($user);
     }
@@ -47,6 +47,6 @@ class UserController extends Controller
     {
         $this->userService->destroyUser($user);
 
-        return response()->json(null , Response::HTTP_NO_CONTENT);
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }

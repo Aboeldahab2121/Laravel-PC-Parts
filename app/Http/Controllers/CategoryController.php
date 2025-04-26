@@ -6,7 +6,6 @@ use App\Http\Requests\PatchCategoryRequest;
 use App\Http\Requests\PostCategoryRequest;
 use App\Http\Services\CategoryService;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class CategoryController extends Controller
@@ -32,14 +31,17 @@ class CategoryController extends Controller
     {
         $categoryData = $request->validated();
         $category = $this->categoryService->createCategory($categoryData);
+        $category->image = asset($category->image);
 
-        return response()->json($category , Response::HTTP_CREATED);
+        return response()->json($category, Response::HTTP_CREATED);
     }
 
-    public function update(PatchCategoryRequest $request , Category $category)
+    public function update(PatchCategoryRequest $request, Category $category)
     {
-        $validated = $request->validated();
-        $category = $this->categoryService->updateCategory($validated , $category);
+//        dd($request->all());
+        $categoryData = $request->validated();
+        $category = $this->categoryService->updateCategory($categoryData, $category);
+        $category->image = asset($category->image);
 
         return response()->json($category);
     }
@@ -48,6 +50,6 @@ class CategoryController extends Controller
     {
         $this->categoryService->destroyCategory($category);
 
-        return response()->json(null ,Response::HTTP_NO_CONTENT);
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }
