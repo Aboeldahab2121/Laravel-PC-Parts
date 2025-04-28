@@ -3,11 +3,11 @@
 namespace App\Http\Services;
 
 use App\Models\Category;
-use App\Models\Item;
 
 class CategoryService
 {
     private FileService $fileService;
+
     public function __construct(FileService $fileService)
     {
         $this->fileService = $fileService;

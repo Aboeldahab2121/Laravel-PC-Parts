@@ -38,7 +38,6 @@ class CategoryController extends Controller
 
     public function update(PatchCategoryRequest $request, Category $category)
     {
-//        dd($request->all());
         $categoryData = $request->validated();
         $category = $this->categoryService->updateCategory($categoryData, $category);
         $category->image = asset($category->image);
