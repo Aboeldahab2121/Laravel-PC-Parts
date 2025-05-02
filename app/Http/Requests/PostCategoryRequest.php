@@ -15,7 +15,7 @@ class PostCategoryRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpg', // storing the image path
+            'image' => 'required|image|mimes:jpg,jpeg,png', // storing the image path
             'min_price' => 'required|integer',
         ];
     }
