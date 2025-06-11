@@ -29,4 +29,3 @@ Route::middleware(['auth:api', 'role:admin'])->group(function () {
     Route::patch('items/{item}', [ItemController::class, 'update']);
     Route::delete('items/{item}', [ItemController::class, 'destroy']);
 });
-

@@ -15,7 +15,7 @@ class PostItemRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'image' => 'required|image|mimes:jpg',
+            'image' => 'required|image|mimes:jpg,jpeg,png',
             'price' => 'required|integer',
             'quantity' => 'required|integer',
             'category_id' => 'required|exists:categories,id',  // manage the foreign key validation

@@ -40,6 +40,8 @@ class ItemController extends Controller
     {
         $itemData = $request->validated();
         $item = $this->itemService->updateItem($itemData, $item);
+        $item->image = asset($item->image);
+
 
         return response()->json($item);
     }

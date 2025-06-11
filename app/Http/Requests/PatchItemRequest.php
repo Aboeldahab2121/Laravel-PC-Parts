@@ -23,7 +23,7 @@ class PatchItemRequest extends FormRequest
     {
         return [
             'title' => 'sometimes|string',
-            'image' => 'sometimes|string', // to store image path
+            'image' => 'sometimes|image|mimes:jpg,jpeg,png', // to store image path
             'price' => 'sometimes|integer',
             'quantity' => 'sometimes|integer',
             'category_id' => 'sometimes|nullable|exists:categories,id',  // manage the foreign key validation

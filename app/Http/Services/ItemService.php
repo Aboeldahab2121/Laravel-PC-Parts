@@ -31,6 +31,10 @@ class ItemService
 
     public function updateItem(array $itemData, Item $item)
     {
+        if (isset($itemData['image'])) {
+            $path = $this->fileService->upload($itemData['image'], 'public');
+            $itemData['image'] = $path;
+        }
         $item->update($itemData);
         // event firing placeholder
 
