@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('items/export' ,[ExportController::class , 'export']);
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout']);
