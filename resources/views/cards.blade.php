@@ -8,12 +8,12 @@
 
                 @foreach($items as $item)
                     <div class="col-3">
-                        <div class="card my-2 shadow-lg">
+                        <div class="card my-2 shadow-lg rounded-top">
                             <img src="{{$item->image}}" class="card-img-top" width="200px" height="200px" alt="Card Image">
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->title}}</h5>
                                 <p class="card-text">${{$item->price}}</p>
-                                <button class="btn btn-primary d-block"><i class="bi bi-cart4 me-2"></i>Add to cart</button>
+                                <button class="btn btn-outline-dark d-block"><i class="bi bi-cart4 me-2"></i>Add to cart</button>
                             </div>
                         </div>
                     </div>
