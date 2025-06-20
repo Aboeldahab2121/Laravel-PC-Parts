@@ -1,7 +1,6 @@
 <?php
 
+use App\Http\Controllers\ItemViewController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return 'WELCOME BISH';
-});
+Route::get('/test', [ItemViewController::class , 'index']);
